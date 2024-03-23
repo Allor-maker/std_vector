@@ -6,14 +6,16 @@ private:
 	double* data = nullptr;
 	int n = 0;
 	int capacity = 0;
+	int factor = 2 * n;//amount of memory allocated in the constructor
 public:	
 	vector():n(0),capacity(1)
 	{
 		data = new double[capacity];
 	}
 
-	vector(int n,double elem = 0):n(n),capacity(2*n)
+	vector(int n,double elem = 0):n(n)
 	{
+		capacity = factor;
 		data = new double[capacity];
 		for (int i = 0; i < this->n; i++)
 		{
@@ -21,8 +23,9 @@ public:
 		}
 	}
 
-	vector(double* arr,int n) :n(n),capacity(2*n)
+	vector(double* arr,int n) :n(n)
 	{
+		capacity = factor;
 		data = new double[capacity];
 		for (int i = 0; i < n; i++)
 		{
